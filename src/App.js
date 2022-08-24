@@ -1,10 +1,16 @@
 import './App.css';
+import GlobalData from './Components/GlobalData/GlobalData';
+import Navbar from './Components/Navbar/Navbar';
+import SearchBar from './Components/SearchBar/SearchBar';
 
 function App() {
   return (
-    <div >
-      <h3>hey</h3>
+    <div>
+      <Navbar />
+      <GlobalData />
+      <SearchBar/>
     </div>
+        
   );
 }
 
