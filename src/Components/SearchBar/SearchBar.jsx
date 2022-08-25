@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-// import 'SearchBar.css';
+import './SearchBar.css';
 
 const SearchBar = (props) => {
-    return ( <div>
-        
+    return ( <div className='searchbar'>
+        Search: <input type="search" />
     </div> );
 }
  
