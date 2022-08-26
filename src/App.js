@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import GlobalData from './Components/GlobalData/GlobalData';
 import Navbar from './Components/Navbar/Navbar';
@@ -11,15 +11,19 @@ function App() {
 
   const [library, setLibrary] = useState([])
 
+  useEffect(() => {
+    fetchGames()
+  }, [])
+
   async function fetchGames() {
-      let respose = await axios.get("http://localhost:8080/all")
-      setLibrary(respose.data);
-      console.log("Games: ", respose.data)
+    let respose = await axios.get("http://localhost:8080/all")
+    setLibrary(respose.data);
+    // console.log("Games: ", respose.data)
   }
   return (
     <div>
       <Navbar />
-      <GlobalData  parentData={library}/>
+      <GlobalData  library={library}/>
       <SearchBar/>
     </div>
         
