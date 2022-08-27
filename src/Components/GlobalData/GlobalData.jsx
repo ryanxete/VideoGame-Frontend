@@ -48,6 +48,8 @@ import { Chart } from "react-google-charts";
                 subtitle: "in millions of dollars (USD)"
             }
 
+                let line;
+                let column;
     return (
         <div>
             <div>
