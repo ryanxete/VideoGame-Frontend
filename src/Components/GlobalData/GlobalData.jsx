@@ -4,26 +4,22 @@ import { Chart } from "react-google-charts";
     const GlobalData = ({library}) => {
 
         function generateColumnChart(){
-            // console.log(library);
-
             let filtered = library.filter(game => game.year >= 2013) 
-            // console.log("filterred: ", filtered)
-
             let platforms = filtered.map(game => {
                 return game.platform})
             let nodup = [...new Set(platforms)]
-                        let eachplatarr = nodup.map(p => {
+            let eachplatarr = nodup.map(p => {
                 let pgames = filtered.filter(game => game.platform == p) 
                 let globalsales = 0       
-                    for (let i = 0; i < pgames.length; i++) {
-                        globalsales += pgames[i].globalsales}
-                            
-                    return [p, globalsales, 'stroke-color: #703593; stroke-width: 4; fill-color: #111']})
+                for (let i = 0; i < pgames.length; i++) {
+                    globalsales += pgames[i].globalsales}
+            return [p, globalsales, 'stroke-color: #703593; stroke-width: 4; fill-color: #111']})
                 
-                const data = [
-                    ["Platform","Sales In $M", { role: "style" }],
-                    ...eachplatarr]
-                return data;}
+            const data = [
+                ["Platform","Sales In $M", { role: "style" }],
+                ...eachplatarr]
+
+        return data;}
 
         function generatePieChart(){
             let filtered = library.filter(game => game.year >= 2013) 
@@ -35,20 +31,16 @@ import { Chart } from "react-google-charts";
                 let globalsales = 0;
                 for (let i = 0; i < ggames.length; i++) {
                     globalsales += ggames[i].globalsales}
-                return [g, globalsales]})
+            return [g, globalsales]})
 
             const data = [
                 ["Genre","Sales In $M"],
                 ...eachgenrearr]
 
         return data;}
-            
-            
 
-
-        
             const chartoptions = {
-                title: "Best Gaming Console To Invest, Based On Game Copies Sold During 2013-2016",
+                title: "Best Gaming Console To Invest in, Based On Game Copies Sold During 2013-2016",
                 subtitle: "in millions of dollars (USD)"
             }
 

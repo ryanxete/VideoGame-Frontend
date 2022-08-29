@@ -4,7 +4,6 @@ import GlobalData from './Components/GlobalData/GlobalData';
 import Navbar from './Components/Navbar/Navbar';
 import SearchBar from './Components/SearchBar/SearchBar';
 import axios from 'axios';
-// import { Chart } from "react-google-charts";
 
 
 function App() {
@@ -18,13 +17,13 @@ function App() {
   async function fetchGames() {
     let respose = await axios.get("http://localhost:8080/all")
     setLibrary(respose.data);
-    // console.log("Games: ", respose.data)
   }
+
   return (
     <div>
       <Navbar />
       <GlobalData  library={library}/>
-      <SearchBar/>
+      <SearchBar library={library}/>
     </div>
         
   );

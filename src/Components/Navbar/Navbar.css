@@ -1,3 +1,6 @@
 .navbar {
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px;
 }
