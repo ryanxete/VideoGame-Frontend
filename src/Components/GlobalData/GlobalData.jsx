@@ -54,7 +54,7 @@ import { Chart } from "react-google-charts";
             <div>
                 <Chart
                 chartType="ColumnChart"
-                width="100%"
+                width="90%"
                 height="400px"
                 data={generateColumnChart()}
                 options={chartoptions}
