@@ -3,7 +3,7 @@ import { Chart } from "react-google-charts";
   
     const GlobalData = ({library}) => {
 
-        function generateDataFormChart(chart){
+        function generateColumnChart(){
             // console.log(library);
 
             let filtered = library.filter(game => game.year >= 2013) 
@@ -12,9 +12,7 @@ import { Chart } from "react-google-charts";
             let platforms = filtered.map(game => {
                 return game.platform})
             let nodup = [...new Set(platforms)]
-            
-            if (chart == column){
-            let eachplatarr = nodup.map(p => {
+                        let eachplatarr = nodup.map(p => {
                 let pgames = filtered.filter(game => game.platform == p) 
                 let globalsales = 0       
                     for (let i = 0; i < pgames.length; i++) {
@@ -27,29 +25,38 @@ import { Chart } from "react-google-charts";
                     ...eachplatarr]
                 return data;}
 
-            else if (chart == line){
-                let eachplatarr = nodup.map(p => {
-                    let pgames = filtered.filter(game => game.platform == p)
-                    return [p]})
+        function generatePieChart(){
+            let filtered = library.filter(game => game.year >= 2013) 
+            let genres = filtered.map(g => {
+                return g.genre})
+            let nodup = [...new Set(genres)]
+            let eachgenrearr = nodup.map(g => {
+                let ggames = filtered.filter(game => game.genre == g)
+                let globalsales = 0;
+                for (let i = 0; i < ggames.length; i++) {
+                    globalsales += ggames[i].globalsales}
+                return [g, globalsales]})
 
-                const data = [
-                    [...eachplatarr],
-                    ["2013", 37.8, 70.8, 22, 33,13, 37.8, 70.8, 45, 33, 43],
-                    ["2014", 37.8, 50.8, 22, 33,13, 47.8, 40.8, 22, 33,23],
-                    ["2015", 37.8, 30.8, 22, 33,13, 37.8, 60.8, 22, 43,23],
-                    ["2016", 37.8, 30.8, 22, 33,13, 37.8, 67.8, 22, 43,23]];
-                    
-                return data
-            }
-        }
+            const data = [
+                ["Genre","Sales In $M"],
+                ...eachgenrearr]
 
-        const options = {
+        return data;}
+            
+            
+
+
+        
+            const chartoptions = {
                 title: "Best Gaming Console To Invest, Based On Game Copies Sold During 2013-2016",
                 subtitle: "in millions of dollars (USD)"
             }
 
-                let line;
-                let column;
+            const pieoptions = {
+                title: "Best Gaming Genres To Play, Based On Genre Copies Sold During 2013-2016",
+                is3D: true,
+              };
+
     return (
         <div>
             <div>
@@ -57,18 +64,18 @@ import { Chart } from "react-google-charts";
                 chartType="ColumnChart"
                 width="100%"
                 height="400px"
-                data={generateDataFormChart(column)}
-                options={options}
+                data={generateColumnChart()}
+                options={chartoptions}
                 />
             </div>
             <div>
-                <Chart
-                chartType="Line"
-                width="95%"
-                height="423px"
-                data={generateDataFormChart(line)}
-                options={options}
-                />
+            <Chart
+                chartType="PieChart"
+                data={generatePieChart()}
+                options={pieoptions}
+                width={"100%"}
+                height={"400px"}
+            />
             </div>
         </div>
         );
