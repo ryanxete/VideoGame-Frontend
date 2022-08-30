@@ -1,6 +1,10 @@
 .navbar {
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
+    padding-top: 2rem;
     display: flex;
     justify-content: center;
-    border-bottom: 2px;
+    border-bottom: 2px solid black;
+    padding-bottom: 2rem;
+    background-color: darkslateblue;
+    color: whitesmoke;
 }

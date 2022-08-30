@@ -1,3 +1,12 @@
 .searchbar {
     padding-top: 2rem;
 }
+
+.search{
+    margin: 1rem 30rem 2rem 30rem;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 2rem;
+    height: 3rem;
+    border-bottom: 3px solid darkslateblue;
+}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Chart } from "react-google-charts";
-  
+import './GlobalData.css'
     const GlobalData = ({library}) => {
 
         function generateColumnChart(){
@@ -50,17 +50,17 @@ import { Chart } from "react-google-charts";
               };
 
     return (
-        <div>
-            <div>
+        <div className='charts'>
+            <div className='column'>
                 <Chart
                 chartType="ColumnChart"
-                width="90%"
+                width="100%"
                 height="400px"
                 data={generateColumnChart()}
                 options={chartoptions}
                 />
             </div>
-            <div>
+            <div className='pie'>
             <Chart
                 chartType="PieChart"
                 data={generatePieChart()}
